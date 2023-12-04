@@ -124,6 +124,8 @@
                     next.children("input").focus();
                     next.attr("isSelected","true");
                     $(this).parent().attr("isSelected" , "false");
+                    var letterAppend = $(this).val().toUpperCase();
+                    $("p.answer").append(letterAppend);
                 }
                 else{
                     $(this).css("background-color", "lightcoral")
@@ -132,6 +134,7 @@
             }
         });
     </script>
+    <p class="answer center"> </p>
     <img src="../images/Table-baconian.webp" alt="baconian decryption table" class="bacon">
 </body>
 </html>

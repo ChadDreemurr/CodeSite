@@ -22,7 +22,6 @@
 
 <body>
     <div class="code-container">
-    
     </div>
 
     <?php
@@ -39,10 +38,10 @@
                     $row=mysqli_fetch_assoc($res);
                     $quote = strtolower($row['quote']);
                     $quoted = $row['quoted'];
-                    echo "The following is a baconian of a quote by $quoted: <br><br>";
+                    echo "<p class = 'center'>The following is a baconian of a quote by $quoted:</p>";
                     $cipher = "";
                     $textBoxes = "";
-                    echo "\"$quote\"<br>";
+                    //echo "<p class = 'center'>\"$quote\"</p>";
                     /*for($i = 0; $i < strlen($quote); $i++){
                         if(ord($quote[$i]) == 32){
                             $cipher = $cipher . "/ ";
@@ -95,21 +94,44 @@
                     echo '</tr></table>';
                 }
             ?>
-            
     </div>
+    
     <script>
         $("tr.input > td:first-of-type > input").focus();
         $("tr.input > td:first-of-type").attr("isSelected","true");
         $("input").on('input', function() {
             if($(this).parent().attr('isSelected') === 'true'){
-                var next = $(this).parent().next("td");
-                $("table.baconian").animate({left: '-=98px'}, "fast", "swing");
-                $(this).blur();
-                next.children("input").focus();
-                next.attr("isSelected","true");
-                $(this).parent().attr("isSelected" , "false");
+                var correct = false;
+                if($(this).val() === $(this).attr('letter')){
+                    correct = true;
+                }
+                else if($(this).attr('letter') === "i" && $(this).val() === "j"){
+                    correct = true;
+                }
+                else if($(this).attr('letter') === "j" && $(this).val() === "i"){
+                    correct = true;
+                }
+                else if($(this).attr('letter') === "u" && $(this).val() === "v"){
+                    correct = true;
+                }
+                else if($(this).attr('letter') === "v" && $(this).val() === "v"){
+                    correct = true;
+                }
+                if(correct){
+                    var next = $(this).parent().next("td");
+                    $("table.baconian").animate({left: '-=91px'}, "fast", "swing");
+                    $(this).blur();
+                    next.children("input").focus();
+                    next.attr("isSelected","true");
+                    $(this).parent().attr("isSelected" , "false");
+                }
+                else{
+                    $(this).css("background-color", "lightcoral")
+                    $(this).val('') 
+                }
             }
         });
     </script>
+    <img src="../images/Table-baconian.webp" alt="baconian decryption table" class="bacon">
 </body>
 </html>

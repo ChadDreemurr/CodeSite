@@ -1,6 +1,9 @@
 .code-container{
     text-align: center;
 }
+.center{
+    text-align: center;
+}
 
 p.center{
     text-align: center;
@@ -10,6 +13,7 @@ p.answer{
     height: 20px;
     font-size: 18px;
 }
+
 body{
     margin:0px;
 }
@@ -53,6 +57,13 @@ img.bacon{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+img.morse{
+    width:40%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 input.bacon{
